@@ -1,0 +1,20 @@
+### salvar
+POST http://localhost:8080/playlist
+Content-Type: application/json
+
+< ./request-iron.json
+
+### listar
+GET http://localhost:8080/playlist
+
+### listar por id
+GET http://localhost:8080/playlist/63ff65b84a96551ae20384dc
+Content-Type: application/json
+
+< ./request-bob.json
+
+### remover
+DELETE http://localhost:8080/playlist/63ff65b84a96551ae20384dc
+
+### stream
+GET http://localhost:8080/playlist/ultimos

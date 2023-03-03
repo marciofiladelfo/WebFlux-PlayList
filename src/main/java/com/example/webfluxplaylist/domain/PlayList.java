@@ -12,6 +12,7 @@ public class PlayList {
 
     @Id
     private String id;
+    private String genero;
     private String banda;
     private String musica;
 }

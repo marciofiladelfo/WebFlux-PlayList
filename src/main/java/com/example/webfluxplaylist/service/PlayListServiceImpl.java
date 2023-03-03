@@ -21,6 +21,12 @@ public class PlayListServiceImpl implements PlayListService{
     }
 
     @Override
+    public Flux<PlayList> findByGenero(String genero) {
+        var list = this.findAll();
+        return list.filter(element -> element.getGenero().equals(genero));
+    }
+
+    @Override
     public Mono<PlayList> findById(String id) {
         return repository.findById(id);
     }
