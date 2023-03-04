@@ -43,6 +43,14 @@ public class PlayListController {
                 .doOnNext(element -> sinks.tryEmitNext(element));
     }
 
+    @GetMapping("/{genero}")
+    public Flux<ResponseEntity<PlayList>> buscarPorGenero(@PathVariable("genero") String genero) {
+        Flux<PlayList> buscar = service.findByGenero(genero);
+        return buscar
+                .map(element -> ResponseEntity.ok().body(element))
+                .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
+    }
+
     @DeleteMapping("/{id}")
     public Mono<Void> apagar(@PathVariable String id) {
         return service.remover(id);

@@ -2,12 +2,20 @@ package com.example.webfluxplaylist.service;
 
 import com.example.webfluxplaylist.domain.PlayList;
 import com.example.webfluxplaylist.repository.PlayListRepository;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+
+import static org.springframework.data.mongodb.core.query.Query.query;
+
+
 @Service
-public class PlayListServiceImpl implements PlayListService{
+public class PlayListServiceImpl implements PlayListService {
+
 
     private final PlayListRepository repository;
 
@@ -22,8 +30,7 @@ public class PlayListServiceImpl implements PlayListService{
 
     @Override
     public Flux<PlayList> findByGenero(String genero) {
-        var list = this.findAll();
-        return list.filter(element -> element.getGenero().equals(genero));
+        return repository.findByGenero(genero);
     }
 
     @Override
