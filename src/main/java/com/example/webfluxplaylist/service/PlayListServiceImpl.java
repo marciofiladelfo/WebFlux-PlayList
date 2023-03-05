@@ -2,15 +2,9 @@ package com.example.webfluxplaylist.service;
 
 import com.example.webfluxplaylist.domain.PlayList;
 import com.example.webfluxplaylist.repository.PlayListRepository;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.List;
-
-import static org.springframework.data.mongodb.core.query.Query.query;
 
 
 @Service

@@ -2,6 +2,7 @@ package com.example.webfluxplaylist.controller;
 
 import com.example.webfluxplaylist.domain.PlayList;
 import com.example.webfluxplaylist.service.PlayListServiceImpl;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,13 +39,13 @@ public class PlayListController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<PlayList> salvar(@RequestBody PlayList playList) {
+    public Mono<PlayList> salvar(@Valid @RequestBody PlayList playList) {
         return service.save(playList)
                 .doOnNext(element -> sinks.tryEmitNext(element));
     }
 
     @GetMapping("/{genero}")
-    public Flux<ResponseEntity<PlayList>> buscarPorGenero(@PathVariable("genero") String genero) {
+    public Flux<ResponseEntity<PlayList>> buscarPorGenero(@PathVariable String genero) {
         Flux<PlayList> buscar = service.findByGenero(genero);
         return buscar
                 .map(element -> ResponseEntity.ok().body(element))

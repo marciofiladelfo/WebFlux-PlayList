@@ -8,13 +8,13 @@ Content-Type: application/json
 GET http://localhost:8080/playlist
 
 ### listar por id
-GET http://localhost:8080/playlist?id="64027d285bd1917fee4e56c9"
+GET http://localhost:8080/playlist/64027d285bd1917fee4e56c9
 Content-Type: application/json
 
 < ./request-iron.json
 
 ### remover
-DELETE http://localhost:8080/playlist?id="64027d285bd1917fee4e56c9"
+DELETE http://localhost:8080/playlist/64027d285bd1917fee4e56c9
 
 ### listar por genero
-GET http://localhost:8080/playlist?genero="rock"
+GET http://localhost:8080/playlist/Rock
